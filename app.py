@@ -2346,8 +2346,6 @@ def reject_shelter_request(request_id):
 # =========================================================
 # START APPLICATION
 # =========================================================
-
 create_tables()
-
 if __name__ == "__main__":
     app.run(debug=True)
