@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shelter Details - Elder-Ease</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0b1f3a;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .profile-card {
+            background-color: #12345a;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .shelter-icon {
+            text-align: center;
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        .shelter-name {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .detail {
+            background-color: #0b1f3a;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .detail strong {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 18px;
+        }
+
+        .button {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            background-color: white;
+            color: #0b1f3a;
+            padding: 14px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #dce8f5;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            .shelter-name {
+                font-size: 25px;
+            }
+
+            .detail {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏠 Shelter Information</h1>
+
+    <div class="profile-card">
+
+        <div class="shelter-icon">
+            🏠
+        </div>
+
+        <div class="shelter-name">
+            {{ shelter["shelter_name"] }}
+        </div>
+
+        <div class="detail">
+            <strong>📍 Location</strong>
+            {{ shelter["address"] }}
+        </div>
+
+        <div class="detail">
+            <strong>📧 Email</strong>
+            {{ shelter["email"] }}
+        </div>
+
+        <div class="detail">
+            <strong>📞 Phone</strong>
+            {{ shelter["phone"] }}
+        </div>
+
+        <a href="/shelter-collaborations" class="button">
+            ← Back to Shelters
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

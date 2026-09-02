@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Register Shelter</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: #071a3d;
+
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+
+            transition: 0.2s;
+        }
+
+        .navigation a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+
+        /* MAIN */
+
+        main {
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+            justify-content: center;
+
+            padding: 50px 20px 70px;
+        }
+
+
+        /* CONTAINER */
+
+        .register-container {
+            width: 100%;
+            max-width: 650px;
+        }
+
+
+        /* HEADER */
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-icon {
+            width: 110px;
+            height: 110px;
+
+            margin: 0 auto 20px;
+
+            background: white;
+            color: #071a3d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 62px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .register-header h1 {
+            margin: 0;
+
+            font-size: 42px;
+
+            color: white;
+        }
+
+        .register-header p {
+            margin: 10px 0;
+
+            font-size: 20px;
+
+            line-height: 1.5;
+
+            color: white;
+        }
+
+
+        /* REGISTRATION CARD */
+
+        .register-card {
+
+            background: white;
+
+            color: #071a3d;
+
+            padding: 40px;
+
+            border-radius: 24px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+
+        /* MESSAGE */
+
+        .success-message {
+
+            background: #d1fae5;
+
+            color: #065f46;
+
+            padding: 16px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 23px;
+        }
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #071a3d;
+        }
+
+        .form-group input {
+
+            width: 100%;
+
+            padding: 17px;
+
+            border: 2px solid #cbd5e1;
+
+            border-radius: 12px;
+
+            font-size: 18px;
+
+            color: #071a3d;
+
+            outline: none;
+        }
+
+        .form-group input:focus {
+
+            border-color: #071a3d;
+
+            box-shadow: 0 0 0 3px rgba(7,26,61,0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #6b7280;
+        }
+
+
+        /* REGISTER BUTTON */
+
+        .register-button {
+
+            width: 100%;
+
+            padding: 18px;
+
+            background: #071a3d;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 12px;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .register-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 7px 18px rgba(0,0,0,0.25);
+        }
+
+
+        /* LOGIN LINK */
+
+        .register-links {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #d1d5db;
+        }
+
+        .register-links p {
+
+            margin: 0 0 12px;
+
+            font-size: 18px;
+
+            color: #071a3d;
+        }
+
+        .register-links a {
+
+            display: inline-block;
+
+            padding: 14px 22px;
+
+            background: #071a3d;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .register-links a:hover {
+
+            transform: translateY(-2px);
+        }
+
+
+        /* FOOTER */
+
+        .register-footer {
+
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+        .register-footer a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+        .register-footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .navigation {
+
+                width: 100%;
+
+                justify-content: center;
+            }
+
+            .navigation a {
+
+                font-size: 15px;
+
+                padding: 10px 12px;
+            }
+
+            main {
+
+                padding: 35px 18px 50px;
+            }
+
+            .register-icon {
+
+                width: 90px;
+                height: 90px;
+
+                font-size: 50px;
+            }
+
+            .register-header h1 {
+
+                font-size: 32px;
+            }
+
+            .register-header p {
+
+                font-size: 18px;
+            }
+
+            .register-card {
+
+                padding: 28px 22px;
+            }
+
+            .form-group label {
+
+                font-size: 18px;
+            }
+
+            .form-group input {
+
+                font-size: 17px;
+            }
+
+            .register-button {
+
+                font-size: 19px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Elder-Ease
+        </div>
+
+        <div class="navigation">
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a href="/shelter-login">
+                🔐 Shelter Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- SHELTER REGISTRATION -->
+
+    <main>
+
+        <div class="register-container">
+
+
+            <!-- HEADER -->
+
+            <div class="register-header">
+
+                <div class="register-icon">
+                    🏠
+                </div>
+
+                <h1>
+                    Register Your Shelter
+                </h1>
+
+                <p>
+                    Join the Elder-Ease community
+                </p>
+
+                <p>
+                    Create a shelter account to share
+                    activities with elderly community members.
+                </p>
+
+            </div>
+
+
+            <!-- REGISTRATION CARD -->
+
+            <div class="register-card">
+
+
+                {% if message %}
+
+                <div class="success-message">
+
+                    ✅ {{ message }}
+
+                </div>
+
+                {% endif %}
+
+
+                <form action="/shelter-register"
+                      method="POST">
+
+
+                    <!-- SHELTER NAME -->
+
+                    <div class="form-group">
+
+                        <label for="shelter_name">
+                            🏠 Shelter Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="shelter_name"
+                            name="shelter_name"
+                            placeholder="Enter shelter name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            📧 Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter shelter email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            📞 Contact Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter contact number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            📍 Shelter Address
+                        </label>
+
+                        <input
+                            type="text"
+                            id="address"
+                            name="address"
+                            placeholder="Enter shelter address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            🔒 Create Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirm_password">
+                            🔐 Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirm_password"
+                            name="confirm_password"
+                            placeholder="Confirm your password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- REGISTER -->
+
+                    <button
+                        type="submit"
+                        class="register-button">
+
+                        🏠 Register Shelter
+
+                    </button>
+
+                </form>
+
+
+                <!-- LOGIN LINK -->
+
+                <div class="register-links">
+
+                    <p>
+                        Already registered?
+                    </p>
+
+                    <a href="/shelter-login">
+
+                        🔐 Login to Shelter Portal
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BACK -->
+
+            <div class="register-footer">
+
+                <a href="/">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>
+

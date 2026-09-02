@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - Healthcare Support</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: navy;
+            color: white;
+        }
+
+        .page-container {
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-icon {
+            font-size: 70px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin: 10px 0;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+        .health-card {
+            background: white;
+            color: navy;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .health-icon {
+            font-size: 60px;
+        }
+
+        .health-card h2 {
+            font-size: 29px;
+            margin: 15px 0;
+        }
+
+        .health-card p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .health-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin-top: 15px;
+            background: navy;
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .health-button:hover {
+            opacity: 0.85;
+        }
+
+        .emergency-button {
+            background: #b00020;
+        }
+
+        .back-button {
+            display: block;
+            max-width: 400px;
+            margin: 30px auto 0;
+            padding: 20px;
+            background: white;
+            color: navy;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+
+            .page-container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .health-card h2 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <div class="content">
+
+        <div class="header">
+
+            <div class="header-icon">
+                🏥
+            </div>
+
+            <h1>Healthcare Support</h1>
+
+            <p class="subtitle">
+                Get help with healthcare, medical services
+                and urgent medical assistance.
+            </p>
+
+        </div>
+
+
+        <!-- FIND HEALTHCARE -->
+
+        <div class="health-card">
+
+            <div class="health-icon">
+                🏥
+            </div>
+
+            <h2>
+                Find Healthcare
+            </h2>
+
+            <p>
+                Find hospitals, clinics and healthcare
+                services near your current location.
+            </p>
+
+            <a href="https://www.google.com/maps/search/hospital+near+me"
+               target="_blank"
+               class="health-button">
+
+                📍 Find Hospitals Near Me
+
+            </a>
+
+            <a href="https://www.google.com/maps/search/clinic+near+me"
+               target="_blank"
+               class="health-button">
+
+                📍 Find Clinics Near Me
+
+            </a>
+
+        </div>
+
+
+        <!-- EMERGENCY MEDICAL HELP -->
+
+        <div class="health-card">
+
+            <div class="health-icon">
+                🚑
+            </div>
+
+            <h2>
+                Emergency Medical Help
+            </h2>
+
+            <p>
+                If you are experiencing a medical emergency,
+                contact emergency services immediately.
+            </p>
+
+            <a href="tel:10177"
+               class="health-button emergency-button">
+
+                🚑 Call Ambulance - 10177
+
+            </a>
+
+            <a href="tel:112"
+               class="health-button emergency-button">
+
+                📞 General Emergency - 112
+
+            </a>
+
+        </div>
+
+
+        <!-- PHARMACY -->
+
+        <div class="health-card">
+
+            <div class="health-icon">
+                💊
+            </div>
+
+            <h2>
+                Find a Pharmacy
+            </h2>
+
+            <p>
+                Find pharmacies near your current location.
+            </p>
+
+            <a href="https://www.google.com/maps/search/pharmacy+near+me"
+               target="_blank"
+               class="health-button">
+
+                💊 Find Pharmacy Near Me
+
+            </a>
+
+        </div>
+
+
+        <!-- HEALTH INFORMATION -->
+
+        <div class="health-card">
+
+            <div class="health-icon">
+                ℹ️
+            </div>
+
+            <h2>
+                Health Information
+            </h2>
+
+            <p>
+                For reliable health information, speak to
+                a qualified healthcare professional.
+            </p>
+
+            <a href="https://www.health.gov.za/"
+               target="_blank"
+               class="health-button">
+
+                🏥 Visit South African Department of Health
+
+            </a>
+
+        </div>
+
+
+        <a href="/help"
+           class="back-button">
+
+            ← Back to Help & Safety
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

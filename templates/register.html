@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Register</title>
+
+    <style>
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            background-color: #071a3d;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 40px 25px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin: 10px 0;
+        }
+
+        .header p {
+            font-size: 18px;
+        }
+
+        .card {
+            background-color: white;
+            color: #071a3d;
+            padding: 35px;
+            border-radius: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            margin-top: 20px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        .home-question {
+            margin-top: 25px;
+            padding: 22px;
+            background-color: #f1f4f8;
+            border-radius: 12px;
+        }
+
+        .home-question label {
+            margin-top: 0;
+        }
+
+        .home-question p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .home-code-box {
+            display: none;
+        }
+
+        .button {
+            width: 100%;
+            margin-top: 30px;
+            padding: 17px;
+            border: none;
+            border-radius: 10px;
+            background-color: #071a3d;
+            color: white;
+            font-size: 19px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #12345a;
+        }
+
+        .message {
+            background-color: #f1f4f8;
+            color: #071a3d;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 17px;
+        }
+
+        .login-link a {
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <div class="header">
+
+            <div class="icon">
+                👵🏽
+            </div>
+
+            <h1>
+                Create Your Elder-Ease Account
+            </h1>
+
+            <p>
+                Join Elder-Ease and stay connected.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+
+            {% if message %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+            {% endif %}
+
+
+            <form method="POST">
+
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    required
+                >
+
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    required
+                >
+
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    required
+                >
+
+
+                <label>
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    name="age"
+                    min="18"
+                    max="120"
+                    required
+                >
+
+
+                <label>
+                    Location
+                </label>
+
+                <input
+                    type="text"
+                    name="location"
+                    required
+                >
+
+
+                <!-- REGISTERED HOME QUESTION -->
+
+                <div class="home-question">
+
+                    <label>
+                        🏠 Do you live in an Elder-Ease registered home?
+                    </label>
+
+                    <p>
+                        If you live in a registered elderly home,
+                        select Yes and enter the Home Code given
+                        to you by the home.
+                    </p>
+
+
+                    <select
+                        name="lives_in_home"
+                        id="lives_in_home"
+                        required
+                        onchange="showHomeCode()"
+                    >
+
+                        <option value="">
+                            Please select
+                        </option>
+
+                        <option value="yes">
+                            Yes, I live in a registered home
+                        </option>
+
+                        <option value="no">
+                            No, I live independently
+                        </option>
+
+                    </select>
+
+
+                    <div
+                        class="home-code-box"
+                        id="home-code-box"
+                    >
+
+                        <label>
+                            🔑 Home Code
+                        </label>
+
+                        <input
+                            type="text"
+                            name="home_code"
+                            id="home_code"
+                            placeholder="Example: SUN482"
+                            style="text-transform: uppercase;"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="button"
+                >
+                    Create Account
+                </button>
+
+
+            </form>
+
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="/login">
+                    Login here
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        function showHomeCode() {
+
+            const selection =
+                document.getElementById("lives_in_home").value;
+
+            const codeBox =
+                document.getElementById("home-code-box");
+
+            const codeInput =
+                document.getElementById("home_code");
+
+
+            if (selection === "yes") {
+
+                codeBox.style.display = "block";
+
+                codeInput.required = true;
+
+            } else {
+
+                codeBox.style.display = "none";
+
+                codeInput.required = false;
+
+                codeInput.value = "";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

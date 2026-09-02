@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - SOS Alerts</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .card {
+            background: white;
+            color: #071a3d;
+            border-radius: 20px;
+            padding: 35px;
+        }
+
+        .icon {
+            text-align: center;
+            font-size: 65px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .alert-card {
+            border: 3px solid #b00020;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .alert-title {
+            color: #b00020;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .info {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+
+        .message {
+            background: #f1f4fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+
+        .call-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 15px 25px;
+            background: #087f23;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .empty {
+            text-align: center;
+            font-size: 21px;
+            padding: 30px;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px;
+            background: #071a3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="icon">
+            🚨
+        </div>
+
+        <h1>SOS Alerts</h1>
+
+        {% if alerts %}
+
+            {% for alert in alerts %}
+
+            <div class="alert-card">
+
+                <div class="alert-title">
+                    🚨 Emergency Alert
+                </div>
+
+                <div class="info">
+
+                    <strong>👤 Elder:</strong>
+                    {{ alert["name"] }}
+
+                    <br>
+
+                    <strong>📧 Email:</strong>
+                    {{ alert["email"] }}
+
+                    <br>
+
+                    <strong>🕐 Time:</strong>
+                    {{ alert["created_at"] }}
+
+                    <br>
+
+                    <strong>📍 Location:</strong>
+                    {{ alert["location"] or "Not shared" }}
+
+                </div>
+
+                <div class="message">
+
+                    <strong>🆘 Message:</strong>
+
+                    <br><br>
+
+                    {{ alert["message"] }}
+
+                </div>
+
+                <a href="mailto:{{ alert['email'] }}"
+                   class="call-button">
+
+                    📧 Contact Elder
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+
+                ✅ No SOS alerts have been recorded yet.
+
+            </div>
+
+        {% endif %}
+
+        <a href="/help"
+           class="back-button">
+
+            ← Back to Help & Safety
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

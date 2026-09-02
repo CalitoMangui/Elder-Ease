@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Create Activity</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Elder-Ease
+        </div>
+
+        <div class="navigation">
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a href="/shelter-dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/activities">
+                📅 Activities
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- CREATE ACTIVITY -->
+
+    <main>
+
+        <div class="create-activity-container">
+
+
+            <!-- HEADER -->
+
+            <div class="create-activity-header">
+
+                <div class="create-activity-icon">
+                    ➕
+                </div>
+
+                <h1>
+                    Create Activity
+                </h1>
+
+                <p>
+                    Create an activity for elderly
+                    community members.
+                </p>
+
+            </div>
+
+
+
+            <!-- FORM -->
+
+            <div class="activity-form-card">
+
+                {% if message %}
+
+                <div class="success-message">
+
+                     ✅ {{ message }}
+
+                       </div>
+
+                    {% endif %}
+
+                <form action="/create-activity"
+                      method="POST">
+                    
+
+
+                    <!-- ACTIVITY NAME -->
+
+                    <div class="form-group">
+
+                        <label for="activity_name">
+                            🎯 Activity Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="activity_name"
+                            name="activity_name"
+                            placeholder="Example: Arts & Crafts"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group">
+
+                        <label for="activity_date">
+                            📅 Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="activity_date"
+                            name="activity_date"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group">
+
+                        <label for="activity_time">
+                            🕐 Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="activity_time"
+                            name="activity_time"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            📍 Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="Example: Sunshine Elder Shelter"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            📝 Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="5"
+                            placeholder="Tell elderly community members about the activity..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- PARTICIPANTS -->
+
+                    <div class="form-group">
+
+                        <label for="participants">
+                            👥 Maximum Participants
+                        </label>
+
+                        <input
+                            type="number"
+                            id="participants"
+                            name="participants"
+                            min="1"
+                            placeholder="Example: 20"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- PUBLISH -->
+
+                    <button
+                        type="submit"
+                        class="publish-button">
+
+                        📢 Publish Activity
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- CANCEL -->
+
+            <div class="create-activity-footer">
+
+                <a href="/shelter-dashboard"
+                   class="activities-button">
+
+                    ↩️ Back to Shelter Dashboard
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Community</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+        }
+
+        .navigation a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+
+        /* MAIN */
+
+        main {
+            padding: 45px 20px 60px;
+        }
+
+        .community-container {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+
+        /* HEADER */
+
+        .community-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .community-icon {
+            width: 110px;
+            height: 110px;
+
+            margin: 0 auto 20px;
+
+            background: white;
+            color: #071a3d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 62px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .community-header h1 {
+            margin: 0 0 10px;
+
+            font-size: 48px;
+        }
+
+        .community-header p {
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        /* CREATE POST */
+
+        .create-post-card {
+            background: white;
+            color: #071a3d;
+
+            border-radius: 24px;
+
+            padding: 30px 35px;
+
+            margin-bottom: 30px;
+
+            text-align: center;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.20);
+        }
+
+        .create-post-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .create-post-card h2 {
+            margin: 0 0 10px;
+
+            font-size: 30px;
+        }
+
+        .create-post-card p {
+            font-size: 19px;
+
+            margin: 0 0 22px;
+        }
+
+        .create-post-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            padding: 17px 30px;
+
+            background: #071a3d;
+
+            color: white;
+
+            border-radius: 14px;
+
+            text-decoration: none;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            transition: transform 0.2s;
+        }
+
+        .create-post-button:hover {
+            transform: scale(1.04);
+        }
+
+
+        /* POSTS */
+
+        .community-posts {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 25px;
+        }
+
+        .post-card {
+            background: white;
+
+            color: #071a3d;
+
+            border-radius: 24px;
+
+            padding: 28px;
+
+            box-shadow: 0 7px 20px rgba(0,0,0,0.18);
+        }
+
+
+        /* POST HEADER */
+
+        .post-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding-bottom: 20px;
+
+            border-bottom: 2px solid #eef1f7;
+        }
+
+        .post-avatar {
+            width: 70px;
+            height: 70px;
+
+            min-width: 70px;
+
+            background: #071a3d;
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+        }
+
+        .post-header h2 {
+            margin: 0 0 5px;
+
+            font-size: 25px;
+        }
+
+        .post-header p {
+            margin: 0;
+
+            font-size: 16px;
+
+            opacity: 0.7;
+        }
+
+
+        /* POST CONTENT */
+
+        .post-content {
+            padding: 25px 5px;
+        }
+
+        .post-content p {
+            margin: 0;
+
+            font-size: 21px;
+
+            line-height: 1.6;
+
+            white-space: pre-wrap;
+        }
+
+
+        /* POST ACTIONS */
+
+        .post-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            padding-top: 5px;
+        }
+
+        .post-actions button {
+            border: 2px solid #071a3d;
+
+            background: white;
+
+            color: #071a3d;
+
+            padding: 12px 17px;
+
+            border-radius: 12px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .post-actions button:hover {
+            background: #071a3d;
+
+            color: white;
+        }
+
+
+        /* COMMENTS */
+
+        .comments-section {
+            margin-top: 25px;
+
+            padding-top: 20px;
+
+            border-top: 2px solid #eef1f7;
+        }
+
+        .comment {
+            background: #f3f6fb;
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            margin-bottom: 12px;
+        }
+
+        .comment-header {
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .comment p {
+            font-size: 18px;
+
+            margin: 8px 0;
+
+            line-height: 1.5;
+        }
+
+        .comment small {
+            display: block;
+
+            font-size: 14px;
+
+            opacity: 0.65;
+
+            margin-bottom: 10px;
+        }
+
+        .comment form button {
+            border: none;
+
+            background: #071a3d;
+
+            color: white;
+
+            padding: 9px 14px;
+
+            border-radius: 9px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+
+        /* EMPTY COMMUNITY */
+
+        .empty-community {
+            background: white;
+
+            color: #071a3d;
+
+            border-radius: 22px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            box-shadow: 0 7px 20px rgba(0,0,0,0.18);
+        }
+
+        .empty-community-icon {
+            font-size: 60px;
+
+            margin-bottom: 15px;
+        }
+
+        .empty-community p {
+            font-size: 21px;
+
+            margin: 0;
+        }
+
+
+        /* FOOTER BUTTON */
+
+        .community-footer {
+            text-align: center;
+
+            margin-top: 35px;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            padding: 17px 30px;
+
+            color: white;
+
+            border: 3px solid white;
+
+            border-radius: 14px;
+
+            text-decoration: none;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.04);
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 18px 20px;
+            }
+
+            .navigation {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .community-header h1 {
+                font-size: 38px;
+            }
+
+            .community-header p {
+                font-size: 20px;
+            }
+
+            .create-post-card {
+                padding: 28px 20px;
+            }
+
+            .create-post-card h2 {
+                font-size: 27px;
+            }
+
+            .post-card {
+                padding: 22px;
+            }
+
+            .post-content p {
+                font-size: 19px;
+            }
+
+            .post-actions {
+                flex-direction: column;
+            }
+
+            .post-actions form,
+            .post-actions a {
+                width: 100%;
+            }
+
+            .post-actions button {
+                width: 100%;
+            }
+
+            .back-button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <div class="logo">
+        Elder-Ease
+    </div>
+
+    <div class="navigation">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <a href="/profile">
+            👤 Profile
+        </a>
+
+        <a href="/help">
+            🆘 Help
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <div class="community-container">
+
+
+        <!-- HEADER -->
+
+        <div class="community-header">
+
+            <div class="community-icon">
+                👥
+            </div>
+
+            <h1>
+                Elder Community
+            </h1>
+
+            <p>
+                Connect, share and make new friends.
+            </p>
+
+        </div>
+
+
+        <!-- CREATE POST -->
+
+        <div class="create-post-card">
+
+            <div class="create-post-icon">
+                💬
+            </div>
+
+            <h2>
+                Share With Your Community
+            </h2>
+
+            <p>
+                Have something you'd like to share with other members?
+            </p>
+
+            <a href="/create-post"
+               class="create-post-button">
+
+                ➕ Create a Post
+
+            </a>
+
+        </div>
+
+
+        <!-- POSTS -->
+
+        <div class="community-posts">
+
+            {% if posts %}
+
+                {% for post in posts %}
+
+                    <div class="post-card">
+
+
+                        <!-- POST HEADER -->
+
+                        <div class="post-header">
+
+                            <div class="post-avatar">
+                                👤
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    {{ post["name"] }}
+                                </h2>
+
+                                <p>
+                                    Community Member
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- POST CONTENT -->
+
+                        <div class="post-content">
+
+                            <p>
+                                {{ post["content"] }}
+                            </p>
+
+                        </div>
+
+
+                        <!-- POST ACTIONS -->
+
+                        <div class="post-actions">
+
+
+                            <form action="/like-post/{{ post['id'] }}"
+                                  method="POST">
+
+                                <button type="submit">
+
+                                    ❤️ Like ({{ post["like_count"] }})
+
+                                </button>
+
+                            </form>
+
+
+                            <a href="/comment/{{ post['id'] }}"
+                               style="text-decoration: none;">
+
+                                <button type="button">
+
+                                    💬 Comment
+
+                                </button>
+
+                            </a>
+
+
+                            {% if post["user_id"] == session["user_id"] %}
+
+
+                                <a href="/edit-post/{{ post['id'] }}"
+                                   style="text-decoration: none;">
+
+                                    <button type="button">
+
+                                        📝 Edit
+
+                                    </button>
+
+                                </a>
+
+
+                                <form action="/delete-post/{{ post['id'] }}"
+                                      method="POST">
+
+                                    <button type="submit"
+                                            onclick="return confirm('Are you sure you want to delete this post?');">
+
+                                        🗑️ Delete
+
+                                    </button>
+
+                                </form>
+
+
+                            {% endif %}
+
+
+                        </div>
+
+
+                        <!-- COMMENTS -->
+
+                        <div class="comments-section">
+
+                            {% for comment in comments %}
+
+                                {% if comment["post_id"] == post["id"] %}
+
+                                    <div class="comment">
+
+                                        <div class="comment-header">
+
+                                            <strong>
+                                                👤 {{ comment["name"] }}
+                                            </strong>
+
+                                        </div>
+
+                                        <p>
+                                            {{ comment["content"] }}
+                                        </p>
+
+                                        <small>
+                                            {{ comment["created_at"] }}
+                                        </small>
+
+
+                                        {% if comment["user_id"] == session["user_id"] %}
+
+                                            <form action="/delete-comment/{{ comment['id'] }}"
+                                                  method="POST">
+
+                                                <button type="submit"
+                                                        onclick="return confirm('Are you sure you want to delete this comment?');">
+
+                                                    🗑️ Delete Comment
+
+                                                </button>
+
+                                            </form>
+
+                                        {% endif %}
+
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+
+                {% endfor %}
+
+
+            {% else %}
+
+
+                <div class="empty-community">
+
+                    <div class="empty-community-icon">
+                        👥
+                    </div>
+
+                    <p>
+                        No community posts yet.
+                        Be the first to share something!
+                    </p>
+
+                </div>
+
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <div class="community-footer">
+
+            <a href="/dashboard"
+               class="back-button">
+
+                ↩️ Back to Dashboard
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Edit Profile</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        nav {
+            width: 100%;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        .navigation a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        main {
+            padding: 45px 20px 60px;
+        }
+
+        .edit-container {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .edit-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .edit-icon {
+            width: 105px;
+            height: 105px;
+
+            margin: 0 auto 20px;
+
+            background: white;
+            color: #071a3d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 58px;
+        }
+
+        .edit-header h1 {
+            font-size: 46px;
+            margin: 0 0 10px;
+        }
+
+        .edit-header p {
+            font-size: 21px;
+            margin: 0;
+        }
+
+        .form-card {
+            background: white;
+            color: #071a3d;
+
+            padding: 35px;
+
+            border-radius: 24px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            margin-bottom: 9px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 17px;
+
+            border: 2px solid #071a3d;
+
+            border-radius: 12px;
+
+            font-size: 19px;
+
+            color: #071a3d;
+
+            background: white;
+        }
+
+        input:focus {
+            outline: none;
+            border: 3px solid #071a3d;
+        }
+
+        .save-button {
+            width: 100%;
+
+            margin-top: 10px;
+
+            padding: 19px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #071a3d;
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            opacity: 0.9;
+        }
+
+        .back-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+        @media (max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 18px 20px;
+            }
+
+            .navigation {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .edit-header h1 {
+                font-size: 38px;
+            }
+
+            .form-card {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Elder-Ease
+    </div>
+
+    <div class="navigation">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <a href="/community">
+            👥 Community
+        </a>
+
+        <a href="/help">
+            🆘 Help
+        </a>
+
+    </div>
+
+</nav>
+
+<main>
+
+    <div class="edit-container">
+
+        <div class="edit-header">
+
+            <div class="edit-icon">
+                ✏️
+            </div>
+
+            <h1>
+                Edit My Profile
+            </h1>
+
+            <p>
+                Update your Elder-Ease information
+            </p>
+
+        </div>
+
+
+        <form method="POST"
+              class="form-card">
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    👤 Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value="{{ user['name'] }}"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    📧 Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ user['email'] }}"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="phone">
+                    📱 Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value="{{ user['phone'] or '' }}"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="age">
+                    🎂 Age
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    name="age"
+                    value="{{ user['age'] or '' }}"
+                    min="18"
+                    max="120"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="location">
+                    📍 Location
+                </label>
+
+                <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    value="{{ user['location'] or '' }}"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit"
+                    class="save-button">
+
+                💾 Save Changes
+
+            </button>
+
+
+        </form>
+
+
+        <a href="/profile"
+           class="back-link">
+
+            ↩️ Back to My Profile
+
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

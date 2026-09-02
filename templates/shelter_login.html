@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Shelter Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: #071a3d;
+
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+
+            transition: 0.2s;
+        }
+
+        .navigation a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+
+        /* MAIN */
+
+        main {
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 50px 20px;
+        }
+
+
+        /* LOGIN CONTAINER */
+
+        .login-container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+
+        /* HEADER */
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-icon {
+            width: 110px;
+            height: 110px;
+
+            margin: 0 auto 20px;
+
+            background: white;
+            color: #071a3d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 62px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .login-header h1 {
+            margin: 0;
+
+            font-size: 42px;
+
+            color: white;
+        }
+
+        .login-header p {
+            margin: 10px 0;
+
+            font-size: 20px;
+
+            color: white;
+        }
+
+
+        /* LOGIN CARD */
+
+        .login-card {
+
+            background: white;
+
+            color: #071a3d;
+
+            padding: 40px;
+
+            border-radius: 24px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+
+        /* ERROR MESSAGE */
+
+        .error-message {
+
+            background: #f8d7da;
+
+            color: #842029;
+
+            padding: 16px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #071a3d;
+        }
+
+        .form-group input {
+
+            width: 100%;
+
+            padding: 17px;
+
+            border: 2px solid #cbd5e1;
+
+            border-radius: 12px;
+
+            font-size: 18px;
+
+            color: #071a3d;
+
+            outline: none;
+        }
+
+        .form-group input:focus {
+
+            border-color: #071a3d;
+
+            box-shadow: 0 0 0 3px rgba(7,26,61,0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #6b7280;
+        }
+
+
+        /* LOGIN BUTTON */
+
+        .login-button {
+
+            width: 100%;
+
+            padding: 18px;
+
+            background: #071a3d;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 12px;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .login-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 7px 18px rgba(0,0,0,0.25);
+        }
+
+
+        /* REGISTER LINKS */
+
+        .login-links {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #d1d5db;
+        }
+
+        .login-links p {
+
+            margin: 0 0 12px;
+
+            font-size: 18px;
+
+            color: #071a3d;
+        }
+
+        .login-links a {
+
+            display: inline-block;
+
+            padding: 14px 22px;
+
+            background: #071a3d;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .login-links a:hover {
+
+            transform: translateY(-2px);
+        }
+
+
+        /* FOOTER */
+
+        .login-footer {
+
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+        .login-footer a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .navigation {
+
+                width: 100%;
+
+                justify-content: center;
+            }
+
+            .navigation a {
+
+                font-size: 15px;
+
+                padding: 10px 12px;
+            }
+
+            main {
+
+                padding: 35px 18px;
+            }
+
+            .login-icon {
+
+                width: 90px;
+                height: 90px;
+
+                font-size: 50px;
+            }
+
+            .login-header h1 {
+
+                font-size: 32px;
+            }
+
+            .login-header p {
+
+                font-size: 18px;
+            }
+
+            .login-card {
+
+                padding: 28px 22px;
+            }
+
+            .form-group label {
+
+                font-size: 18px;
+            }
+
+            .form-group input {
+
+                font-size: 17px;
+            }
+
+            .login-button {
+
+                font-size: 19px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Elder-Ease
+        </div>
+
+        <div class="navigation">
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a href="/login">
+                👵 Elder Login
+            </a>
+
+            <a href="/register">
+                📝 Elder Register
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- SHELTER LOGIN -->
+
+    <main>
+
+        <div class="login-container">
+
+
+            <!-- HEADER -->
+
+            <div class="login-header">
+
+                <div class="login-icon">
+                    🏠
+                </div>
+
+                <h1>
+                    Shelter Login
+                </h1>
+
+                <p>
+                    Welcome back to Elder-Ease
+                </p>
+
+                <p>
+                    Sign in to manage your shelter and activities.
+                </p>
+
+            </div>
+
+
+            <!-- LOGIN CARD -->
+
+            <div class="login-card">
+
+
+                {% if message %}
+
+                <div class="error-message">
+                    ❌ {{ message }}
+                </div>
+
+                {% endif %}
+
+
+                <form action="/shelter-login"
+                      method="POST">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            📧 Shelter Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter shelter email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            🔒 Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- LOGIN -->
+
+                    <button
+                        type="submit"
+                        class="login-button">
+
+                        🔐 Login to Shelter Portal
+
+                    </button>
+
+                </form>
+
+
+                <!-- REGISTER -->
+
+                <div class="login-links">
+
+                    <p>
+                        New shelter?
+                    </p>
+
+                    <a href="/shelter-register">
+
+                        🏠 Register Your Shelter
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BACK -->
+
+            <div class="login-footer">
+
+                <a href="/">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>
+

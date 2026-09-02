@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - SOS</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .card {
+            background: white;
+            color: #071a3d;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 21px;
+            line-height: 1.6;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 130px;
+            padding: 15px;
+            font-size: 20px;
+            border: 2px solid #071a3d;
+            border-radius: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sos-button {
+            width: 100%;
+            padding: 22px;
+            background: #b00020;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 26px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .sos-button:hover {
+            opacity: 0.9;
+        }
+
+        .contact-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #eef3ff;
+            border-radius: 15px;
+        }
+
+        .call-button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 15px 25px;
+            background: #087f23;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 25px;
+            background: #071a3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 19px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="icon">
+            🚨
+        </div>
+
+        <h1>SOS Emergency</h1>
+
+        <p>
+            Use this button if you need help.
+            Your emergency alert will be recorded
+            and your trusted contact will be shown.
+        </p>
+
+        {% if trusted_contact %}
+
+        <div class="contact-box">
+
+            <h2>👤 Your Trusted Contact</h2>
+
+            <p>
+                <strong>{{ trusted_contact["name"] }}</strong>
+            </p>
+
+            <p>
+                {{ trusted_contact["relationship"] }}
+            </p>
+
+            <a href="tel:{{ trusted_contact['phone'] }}"
+               class="call-button">
+
+                📞 Call Trusted Contact
+
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <div class="contact-box">
+
+            <h2>⚠️ No Trusted Contact</h2>
+
+            <p>
+                You have not added a trusted contact yet.
+            </p>
+
+            <a href="/trusted-contact"
+               class="back-button">
+
+                ➕ Add Trusted Contact
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+        <form action="/sos"
+              method="POST"
+              onsubmit="return confirm('Are you sure you want to send an SOS alert?');">
+
+            <p>
+                <strong>Emergency message</strong>
+            </p>
+
+            <textarea
+                name="message"
+                placeholder="Describe what help you need..."
+                required>I may need help. Please contact me as soon as possible.</textarea>
+
+            <input type="hidden"
+                   name="location"
+                   value="Location not shared">
+
+            <button type="submit"
+                    class="sos-button">
+
+                🚨 SEND SOS ALERT
+
+            </button>
+
+        </form>
+
+        <a href="/help"
+           class="back-button">
+
+            ← Back to Help & Safety
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

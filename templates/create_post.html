@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Create Post</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+        }
+
+        .navigation a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+
+        /* MAIN */
+
+        main {
+            padding: 45px 20px 60px;
+        }
+
+        .create-container {
+            width: 100%;
+            max-width: 750px;
+            margin: auto;
+        }
+
+
+        /* HEADER */
+
+        .create-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .create-icon {
+            width: 110px;
+            height: 110px;
+
+            margin: 0 auto 20px;
+
+            background: white;
+            color: #071a3d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 62px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .create-header h1 {
+            margin: 0 0 10px;
+
+            font-size: 48px;
+        }
+
+        .create-header p {
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        /* FORM CARD */
+
+        .post-card {
+            background: white;
+            color: #071a3d;
+
+            padding: 35px;
+
+            border-radius: 24px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+        }
+
+
+        /* MESSAGE */
+
+        .message {
+            background: #eef3ff;
+
+            color: #071a3d;
+
+            padding: 16px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            font-size: 18px;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* LABEL */
+
+        label {
+            display: block;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* TEXT AREA */
+
+        textarea {
+            width: 100%;
+
+            min-height: 220px;
+
+            padding: 18px;
+
+            border: 2px solid #071a3d;
+
+            border-radius: 15px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 20px;
+
+            line-height: 1.5;
+
+            color: #071a3d;
+
+            background: white;
+
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+
+            border: 3px solid #071a3d;
+        }
+
+        textarea::placeholder {
+            color: #777;
+        }
+
+
+        /* PUBLISH BUTTON */
+
+        .publish-button {
+            width: 100%;
+
+            margin-top: 22px;
+
+            padding: 19px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #071a3d;
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: transform 0.2s,
+                        opacity 0.2s;
+        }
+
+        .publish-button:hover {
+            transform: translateY(-2px);
+
+            opacity: 0.92;
+        }
+
+
+        /* BACK BUTTON */
+
+        .back-area {
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            padding: 16px 28px;
+
+            color: white;
+
+            border: 3px solid white;
+
+            border-radius: 14px;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.04);
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 18px 20px;
+            }
+
+            .navigation {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            main {
+                padding: 30px 18px 50px;
+            }
+
+            .create-header h1 {
+                font-size: 38px;
+            }
+
+            .create-header p {
+                font-size: 20px;
+            }
+
+            .post-card {
+                padding: 25px 20px;
+            }
+
+            textarea {
+                min-height: 200px;
+
+                font-size: 19px;
+            }
+
+            .back-button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <div class="logo">
+        Elder-Ease
+    </div>
+
+    <div class="navigation">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <a href="/community">
+            👥 Community
+        </a>
+
+        <a href="/help">
+            🆘 Help
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <div class="create-container">
+
+
+        <!-- HEADER -->
+
+        <div class="create-header">
+
+            <div class="create-icon">
+                💬
+            </div>
+
+            <h1>
+                Create a Post
+            </h1>
+
+            <p>
+                Share something with the Elder-Ease community.
+            </p>
+
+        </div>
+
+
+        {% if message %}
+
+            <div class="message">
+                {{ message }}
+            </div>
+
+        {% endif %}
+
+
+        <!-- FORM -->
+
+        <div class="post-card">
+
+            <form action="/create-post"
+                  method="POST">
+
+
+                <label for="content">
+
+                    💭 What would you like to share?
+
+                </label>
+
+
+                <textarea
+                    id="content"
+                    name="content"
+                    placeholder="Write your message here..."
+                    required></textarea>
+
+
+                <button type="submit"
+                        class="publish-button">
+
+                    📤 Publish Post
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <div class="back-area">
+
+            <a href="/community"
+               class="back-button">
+
+                ← Back to Community
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+</body>
+
+</html>

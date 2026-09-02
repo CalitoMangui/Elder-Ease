@@ -1,0 +1,348 @@
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Shelter Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        html,
+        body {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .shelter-dashboard-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 25px;
+        }
+
+        .shelter-dashboard-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .shelter-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .shelter-dashboard-header h1 {
+            color: white;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .shelter-dashboard-header p {
+            color: white;
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .shelter-dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .shelter-dashboard-card {
+            display: block;
+            background-color: #12345a;
+            color: white;
+            text-decoration: none;
+            padding: 35px 25px;
+            border-radius: 18px;
+            text-align: center;
+            min-height: 190px;
+            transition: 0.2s;
+            box-sizing: border-box;
+        }
+
+        .shelter-dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .shelter-card-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .shelter-dashboard-card h2 {
+            color: white;
+            font-size: 25px;
+            margin: 10px 0;
+        }
+
+        .shelter-dashboard-card p {
+            color: white;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        .shelter-dashboard-footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .shelter-button {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: white;
+            color: #0b1f3a;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        @media (max-width: 700px) {
+
+            .shelter-dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shelter-dashboard-header h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            Elder-Ease
+        </div>
+
+        <div class="navigation">
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a href="/shelter-dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/my-activities">
+                📅 My Activities
+            </a>
+
+            <a href="/notifications">
+                🔔 Notifications
+            </a>
+
+        </div>
+
+    </nav>
+
+    <main>
+
+        <div class="shelter-dashboard-container">
+
+            <div class="shelter-dashboard-header">
+
+                <div class="shelter-icon">
+                    🏠
+                </div>
+
+                <h1>
+                    Shelter Dashboard
+                </h1>
+
+                <p>
+                    Welcome to Elder-Ease
+                </p>
+
+                <p>
+                    Manage your shelter and monitor your elderly community.
+                </p>
+
+            </div>
+
+            <div class="shelter-dashboard-grid">
+
+                <!-- CREATE ACTIVITY -->
+
+                <a href="/create-activity"
+                   class="shelter-dashboard-card">
+
+                    <div class="shelter-card-icon">
+                        ➕
+                    </div>
+
+                    <h2>
+                        Create Activity
+                    </h2>
+
+                    <p>
+                        Create and publish activities for elderly community members.
+                    </p>
+
+                </a>
+
+
+                <!-- MY ACTIVITIES -->
+
+                <a href="/my-activities"
+                   class="shelter-dashboard-card">
+
+                    <div class="shelter-card-icon">
+                        📅
+                    </div>
+
+                    <h2>
+                        My Activities
+                    </h2>
+
+                    <p>
+                        View, edit and delete activities published by your shelter.
+                    </p>
+
+                </a>
+
+
+                <!-- MONITOR ELDER COMMUNITY -->
+
+                <a href="/shelter-community"
+                   class="shelter-dashboard-card">
+
+                    <div class="shelter-card-icon">
+                        👀
+                    </div>
+
+                    <h2>
+                        Monitor Elder Community
+                    </h2>
+
+                    <p>
+                        Monitor posts and conversations shared by elderly community members.
+                    </p>
+
+                </a>
+
+
+                <!-- SHELTER COLLABORATIONS -->
+
+                <a href="/shelter-collaborations"
+                   class="shelter-dashboard-card">
+
+                    <div class="shelter-card-icon">
+                        🤝
+                    </div>
+
+                    <h2>
+                        Shelter Collaborations
+                    </h2>
+
+                    <p>
+                        Connect and collaborate with other shelters.
+                    </p>
+
+                </a>
+
+
+                <!-- SHELTER PROFILE -->
+
+                <a href="/shelter-profile"
+                   class="shelter-dashboard-card">
+
+                    <div class="shelter-card-icon">
+                        🏠
+                    </div>
+
+                    <h2>
+                        Shelter Profile
+                    </h2>
+
+                    <p>
+                        View and manage your shelter information.
+                    </p>
+
+                </a>
+
+
+                <!-- ELDER CONNECTION REQUESTS -->
+
+                <a href="/shelter-requests"
+                   class="shelter-dashboard-card">
+
+                    <div class="shelter-card-icon">
+                        👥
+                    </div>
+
+                    <h2>
+                        Elder Connection Requests
+                    </h2>
+
+                    <p>
+                        Review requests from elderly members who want to connect to your home.
+                    </p>
+
+                </a>
+
+
+                <!-- NOTIFICATIONS -->
+
+                <a href="/notifications"
+                   class="shelter-dashboard-card">
+
+                    <div class="shelter-card-icon">
+                        🔔
+                    </div>
+
+                    <h2>
+                        Notifications
+                    </h2>
+
+                    <p>
+                        View important updates and notifications from Elder-Ease.
+                    </p>
+
+                </a>
+
+
+            </div>
+
+
+            <div class="shelter-dashboard-footer">
+
+                <a href="/"
+                   class="shelter-button">
+
+                    🏠 Back to Home
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
+```

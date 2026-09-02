@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - Emergency Alert</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .card {
+            background: white;
+            color: #071a3d;
+            border-radius: 20px;
+            padding: 35px;
+        }
+
+        .icon {
+            text-align: center;
+            font-size: 75px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #b00020;
+            font-size: 38px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 21px;
+        }
+
+        .info-card {
+            background: #f1f4fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .info-card h2 {
+            font-size: 26px;
+        }
+
+        .info {
+            font-size: 21px;
+            line-height: 1.7;
+        }
+
+        .message {
+            background: white;
+            border: 2px solid #b00020;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            font-size: 21px;
+        }
+
+        .emergency-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin-top: 20px;
+            background: #b00020;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .call-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin-top: 15px;
+            background: #087f23;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .notice {
+            margin-top: 25px;
+            font-size: 17px;
+            color: #555;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="icon">
+            🚨
+        </div>
+
+        <h1>EMERGENCY ALERT</h1>
+
+        <div class="warning">
+
+            <strong>
+                ⚠️ Someone may need your help.
+            </strong>
+
+            <br><br>
+
+            Please contact them as soon as possible.
+
+        </div>
+
+        <div class="info-card">
+
+            <h2>
+                👤 Person requesting help
+            </h2>
+
+            <div class="info">
+
+                <strong>Name:</strong>
+                {{ alert["name"] }}
+
+                <br>
+
+                <strong>Email:</strong>
+                {{ alert["email"] }}
+
+                <br>
+                <br>
+
+<strong>📞 Phone:</strong>
+{{ alert["phone"] or "Phone number not provided" }}
+
+                <strong>Time:</strong>
+                {{ alert["created_at"] }}
+
+            </div>
+
+            <a href="mailto:{{ alert['email'] }}"
+               class="call-button">
+
+                📧 Contact {{ alert["name"] }}
+
+            </a>
+            <a href="tel:{{ alert['phone'] }}"
+   class="call-button">
+
+    📞 Call {{ alert["name"] }}
+
+</a>
+
+        </div>
+
+        <div class="info-card">
+
+            <h2>
+                🆘 Emergency Message
+            </h2>
+
+            <div class="message">
+
+                {{ alert["message"] }}
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <h2>
+                📍 Location
+            </h2>
+
+            <div class="info">
+
+                {% if alert["location"] and alert["location"] != "Location not shared" %}
+
+                    {{ alert["location"] }}
+
+                {% else %}
+
+                    Location was not shared.
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <a href="tel:10111"
+           class="emergency-button">
+
+            👮 Call Police - 10111
+
+        </a>
+
+        <a href="tel:10177"
+           class="emergency-button">
+
+            🚑 Call Ambulance - 10177
+
+        </a>
+
+        <p class="notice">
+
+            This emergency alert was created through
+            Elder-Ease.
+
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

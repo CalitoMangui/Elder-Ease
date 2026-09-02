@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Connection Requests</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        html,
+        body {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 45px 25px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 38px;
+            margin: 10px 0;
+            color: white;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: white;
+        }
+
+        .request-card {
+            background-color: white;
+            color: #0b1f3a;
+            padding: 28px;
+            border-radius: 18px;
+            margin-bottom: 22px;
+        }
+
+        .request-card h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .elder-info {
+            background-color: #f1f4f8;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 18px 0;
+        }
+
+        .elder-info p {
+            margin: 8px 0;
+            font-size: 17px;
+        }
+
+        .elder-info strong {
+            display: inline-block;
+            min-width: 110px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .request-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .approve {
+            background-color: #0b1f3a;
+            color: white;
+        }
+
+        .reject {
+            background-color: #eeeeee;
+            color: #0b1f3a;
+        }
+
+        .no-requests {
+            background-color: white;
+            color: #0b1f3a;
+            padding: 45px 25px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .no-requests-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 25px;
+            background-color: white;
+            color: #0b1f3a;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        @media (max-width: 700px) {
+
+            .header h1 {
+                font-size: 30px;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Elder-Ease
+        </div>
+
+        <div class="navigation">
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a href="/shelter-dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/shelter-profile">
+                🏠 Shelter Profile
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main>
+
+        <div class="container">
+
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <div class="header-icon">
+                    👥
+                </div>
+
+                <h1>
+                    Elder Connection Requests
+                </h1>
+
+                <p>
+                    Review elderly members who want to
+                    connect with your registered home.
+                </p>
+
+            </div>
+
+
+            {% if requests %}
+
+                {% for request in requests %}
+
+                    <div class="request-card">
+
+                        <h2>
+                            👤 {{ request["name"] }}
+                        </h2>
+
+
+                        {% if request["status"] == "pending" %}
+
+                            <div class="status pending">
+                                ⏳ Pending
+                            </div>
+
+                        {% elif request["status"] == "approved" %}
+
+                            <div class="status approved">
+                                ✅ Approved
+                            </div>
+
+                        {% elif request["status"] == "rejected" %}
+
+                            <div class="status rejected">
+                                ❌ Rejected
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="elder-info">
+
+                            <p>
+                                <strong>Email:</strong>
+                                {{ request["email"] }}
+                            </p>
+
+                            <p>
+                                <strong>Phone:</strong>
+                                {{ request["phone"] or "Not provided" }}
+                            </p>
+
+                            <p>
+                                <strong>Age:</strong>
+                                {{ request["age"] or "Not provided" }}
+                            </p>
+
+                            <p>
+                                <strong>Location:</strong>
+                                {{ request["location"] or "Not provided" }}
+                            </p>
+
+                            <p class="request-date">
+                                Request submitted:
+                                {{ request["created_at"] }}
+                            </p>
+
+                        </div>
+
+
+                        {% if request["status"] == "pending" %}
+
+                            <div class="button-row">
+
+                                <form
+                                    method="POST"
+                                    action="/approve-shelter-request/{{ request['id'] }}"
+                                    style="flex: 1;"
+                                >
+
+                                    <button
+                                        type="submit"
+                                        class="button approve"
+                                    >
+                                        ✅ Approve Request
+                                    </button>
+
+                                </form>
+
+
+                                <form
+                                    method="POST"
+                                    action="/reject-shelter-request/{{ request['id'] }}"
+                                    style="flex: 1;"
+                                >
+
+                                    <button
+                                        type="submit"
+                                        class="button reject"
+                                    >
+                                        ❌ Reject Request
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        {% endif %}
+
+
+                    </div>
+
+                {% endfor %}
+
+
+            {% else %}
+
+                <div class="no-requests">
+
+                    <div class="no-requests-icon">
+                        📭
+                    </div>
+
+                    <h2>
+                        No Connection Requests
+                    </h2>
+
+                    <p>
+                        There are currently no elderly members
+                        waiting to connect to your home.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+            <div style="text-align: center;">
+
+                <a
+                    href="/shelter-dashboard"
+                    class="back-button"
+                >
+                    ← Back to Shelter Dashboard
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - Participants</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        html,
+        body {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-container {
+            background-color: #0b1f3a !important;
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        .content-card {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .page-icon {
+            font-size: 60px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .activity-name {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 35px;
+        }
+
+        .participant-card {
+            background-color: white;
+            color: #0b1f3a;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .participant-card h2 {
+            font-size: 28px;
+            margin: 0 0 12px 0;
+        }
+
+        .participant-card p {
+            font-size: 21px;
+            margin: 8px 0;
+        }
+
+        .no-participants {
+            background-color: white;
+            color: #0b1f3a;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        .back-button {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: white;
+            color: #0b1f3a;
+            text-align: center;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .activity-name {
+                font-size: 23px;
+            }
+
+            .participant-card h2 {
+                font-size: 25px;
+            }
+
+            .participant-card p {
+                font-size: 19px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <div class="content-card">
+
+            <div class="page-icon">
+                👥
+            </div>
+
+            <h1>
+                Activity Participants
+            </h1>
+
+            <div class="activity-name">
+                📅 {{ activity["name"] }}
+            </div>
+
+
+            {% if participants %}
+
+                {% for participant in participants %}
+
+                    <div class="participant-card">
+
+                        <h2>
+                            👤 {{ participant["name"] }}
+                        </h2>
+
+                        <p>
+                            📧 {{ participant["email"] }}
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="no-participants">
+
+                    👥 <strong>No one has joined yet.</strong>
+
+                    <br><br>
+
+                    Participants will appear here when elders
+                    join this activity.
+
+                </div>
+
+            {% endif %}
+
+
+            <a href="/my-activities"
+               class="back-button">
+
+                ← Back to My Activities
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

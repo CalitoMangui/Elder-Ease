@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - SOS Sent</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .card {
+            background: white;
+            color: #071a3d;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 75px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #b00020;
+        }
+
+        p {
+            font-size: 21px;
+            line-height: 1.6;
+        }
+
+        .alert-box {
+            background: #f1f4fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .whatsapp-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin-top: 20px;
+            background: #087f23;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .call-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin-top: 15px;
+            background: #071a3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: block;
+            margin-top: 25px;
+            padding: 15px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 19px;
+        }
+
+        .no-contact {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="icon">
+            🚨
+        </div>
+
+        <h1>SOS Alert Created</h1>
+
+        <p>
+            Your emergency alert has been recorded.
+        </p>
+
+        <div class="alert-box">
+
+            <p>
+                <strong>🆘 Message:</strong>
+            </p>
+
+            <p>
+                {{ message }}
+            </p>
+
+            <p>
+                <strong>📍 Location:</strong>
+                {{ location or "Not shared" }}
+            </p>
+
+        </div>
+
+        {% if trusted_contact %}
+
+            <h2>
+                👤 {{ trusted_contact["name"] }}
+            </h2>
+
+            <p>
+                {{ trusted_contact["relationship"] }}
+            </p>
+
+            <a href="https://wa.me/{{ trusted_contact['phone'] }}?text={{ 'URGENT SOS from ' ~ session['user_name'] ~ '. Please help me. Emergency message: ' ~ message ~ '. Alert: ' ~ alert_link }}"
+               class="whatsapp-button">
+
+                💬 Send SOS on WhatsApp
+
+            </a>
+
+            <a href="tel:{{ trusted_contact['phone'] }}"
+               class="call-button">
+
+                📞 Call Trusted Contact
+
+            </a>
+
+        {% else %}
+
+            <div class="no-contact">
+
+                <h2>⚠️ No Trusted Contact Added</h2>
+
+                <p>
+                    Add a trusted contact so someone you know
+                    can help you during an emergency.
+                </p>
+
+                <a href="/trusted-contact"
+                   class="call-button">
+
+                    ➕ Add Trusted Contact
+
+                </a>
+
+            </div>
+
+        {% endif %}
+
+        <a href="/help"
+           class="back-button">
+
+            ← Back to Help & Safety
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

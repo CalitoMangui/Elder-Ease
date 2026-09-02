@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Monitor Elder Community</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        html,
+        body {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .community-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 45px 25px;
+        }
+
+        .community-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .community-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .community-header h1 {
+            font-size: 38px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .community-header p {
+            font-size: 18px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        .monitor-notice {
+            background-color: #12345a;
+            padding: 22px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .monitor-notice h2 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .monitor-notice p {
+            color: white;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .post-card {
+            background-color: white;
+            color: #0b1f3a;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-author {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .post-date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 18px;
+        }
+
+        .post-content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .post-likes {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .comments-section {
+            border-top: 1px solid #ddd;
+            padding-top: 18px;
+        }
+
+        .comments-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .comment {
+            background-color: #f1f4f8;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comment-content {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .no-comments {
+            color: #666;
+            font-style: italic;
+        }
+
+        .no-posts {
+            background-color: white;
+            color: #0b1f3a;
+            padding: 40px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .no-posts-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 25px;
+            background-color: white;
+            color: #0b1f3a;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 700px) {
+
+            .community-header h1 {
+                font-size: 30px;
+            }
+
+            .post-card {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Elder-Ease
+        </div>
+
+        <div class="navigation">
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a href="/shelter-dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/my-activities">
+                📅 My Activities
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main>
+
+        <div class="community-container">
+
+
+            <!-- HEADER -->
+
+            <div class="community-header">
+
+                <div class="community-icon">
+                    👀
+                </div>
+
+                <h1>
+                    Monitor Elder Community
+                </h1>
+
+                <p>
+                    View conversations and interactions
+                    shared by elderly community members.
+                </p>
+
+            </div>
+
+
+            <!-- NOTICE -->
+
+            <div class="monitor-notice">
+
+                <h2>
+                    🛡️ Community Monitoring
+                </h2>
+
+                <p>
+                    This area is for shelter staff to monitor
+                    the elder community. You can view posts,
+                    comments and likes shared by community members.
+                </p>
+
+            </div>
+
+
+            <!-- POSTS -->
+
+            {% if posts %}
+
+                {% for post in posts %}
+
+                    <div class="post-card">
+
+
+                        <div class="post-author">
+
+                            👤 {{ post["user_name"] or "Elder-Ease Member" }}
+
+                        </div>
+
+
+                        <div class="post-date">
+
+                            {{ post["created_at"] }}
+
+                        </div>
+
+
+                        <div class="post-content">
+
+                            {{ post["content"] }}
+
+                        </div>
+
+
+                        <div class="post-likes">
+
+                            ❤️ Likes:
+                            {% set like_count = namespace(value=0) %}
+
+                            {% for comment in comments %}
+
+                            {% endfor %}
+
+                            View community interaction
+
+                        </div>
+
+
+                        <!-- COMMENTS -->
+
+                        <div class="comments-section">
+
+                            <div class="comments-title">
+                                💬 Comments
+                            </div>
+
+
+                            {% set post_comments = [] %}
+
+                            {% for comment in comments %}
+
+                                {% if comment["post_id"] == post["id"] %}
+
+                                    <div class="comment">
+
+                                        <div class="comment-author">
+
+                                            👤
+                                            {{ comment["user_name"] or "Elder-Ease Member" }}
+
+                                        </div>
+
+                                        <div class="comment-content">
+
+                                            {{ comment["content"] }}
+
+                                        </div>
+
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                            {% set has_comments = false %}
+
+                            {% for comment in comments %}
+
+                                {% if comment["post_id"] == post["id"] %}
+
+                                    {% set has_comments = true %}
+
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                            {% if not has_comments %}
+
+                                <div class="no-comments">
+                                    No comments yet.
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                    </div>
+
+                {% endfor %}
+
+
+            {% else %}
+
+                <div class="no-posts">
+
+                    <div class="no-posts-icon">
+                        💬
+                    </div>
+
+                    <h2>
+                        No Community Posts Yet
+                    </h2>
+
+                    <p>
+                        Elder community members have not
+                        shared any posts yet.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- BACK BUTTON -->
+
+            <div style="text-align: center;">
+
+                <a href="/shelter-dashboard"
+                   class="back-button">
+
+                    ← Back to Shelter Dashboard
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

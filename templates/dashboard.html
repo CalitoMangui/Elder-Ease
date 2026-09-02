@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease | Dashboard</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #071a3d;
+            color: white;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: #071a3d;
+
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 12px;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+
+            transition: 0.2s;
+        }
+
+        .navigation a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+
+        /* MAIN */
+
+        main {
+            width: 100%;
+            padding: 45px 25px 60px;
+        }
+
+        .dashboard {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        /* WELCOME */
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .welcome-icon {
+            width: 100px;
+            height: 100px;
+
+            margin: 0 auto 20px;
+
+            background: white;
+            color: #071a3d;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 58px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .welcome h1 {
+            margin: 0;
+            font-size: 46px;
+        }
+
+        .welcome p {
+            margin-top: 12px;
+            font-size: 23px;
+        }
+
+
+        /* BUTTON GRID */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+
+        /* BUTTON */
+
+        .dashboard-button {
+
+            background: white;
+
+            color: #071a3d;
+
+            text-decoration: none;
+
+            min-height: 180px;
+
+            padding: 28px;
+
+            border-radius: 22px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            box-shadow: 0 7px 20px rgba(0,0,0,0.18);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .dashboard-button:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+        }
+
+
+        /* ICON CIRCLE */
+
+        .dashboard-icon {
+
+            width: 105px;
+            height: 105px;
+
+            min-width: 105px;
+
+            border-radius: 50%;
+
+            background: #071a3d;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 55px;
+        }
+
+
+        /* BUTTON TEXT */
+
+        .dashboard-text {
+            flex: 1;
+        }
+
+        .dashboard-text h2 {
+
+            margin: 0 0 10px;
+
+            font-size: 29px;
+        }
+
+        .dashboard-text p {
+
+            margin: 0;
+
+            font-size: 18px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ARROW */
+
+        .arrow {
+
+            font-size: 40px;
+
+            font-weight: bold;
+        }
+
+
+        /* SOS */
+
+        .sos-button {
+
+            border: 5px solid #071a3d;
+        }
+
+        .sos-button .dashboard-icon {
+
+            font-size: 58px;
+        }
+
+
+        /* LOGOUT */
+
+        .logout {
+
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+        .logout a {
+
+            display: inline-block;
+
+            background: white;
+
+            color: #071a3d;
+
+            text-decoration: none;
+
+            padding: 17px 35px;
+
+            border-radius: 12px;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .logout a:hover {
+
+            transform: scale(1.04);
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .navigation {
+
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .navigation a {
+
+                font-size: 16px;
+            }
+
+            main {
+
+                padding: 30px 18px 50px;
+            }
+
+            .welcome h1 {
+
+                font-size: 36px;
+            }
+
+            .welcome p {
+
+                font-size: 20px;
+            }
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-button {
+
+                min-height: 160px;
+
+                padding: 22px;
+
+                gap: 18px;
+            }
+
+            .dashboard-icon {
+
+                width: 85px;
+                height: 85px;
+
+                min-width: 85px;
+
+                font-size: 45px;
+            }
+
+            .dashboard-text h2 {
+
+                font-size: 25px;
+            }
+
+            .dashboard-text p {
+
+                font-size: 17px;
+            }
+
+            .arrow {
+
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <div class="logo">
+        Elder-Ease
+    </div>
+
+    <div class="navigation">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/community">
+            👥 Community
+        </a>
+
+        <a href="/profile">
+            👤 Profile
+        </a>
+
+        <a href="/notifications">
+            🔔 Notifications
+        </a>
+
+        <a href="/help">
+            🆘 Help
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <div class="dashboard">
+
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <div class="welcome-icon">
+                👋🏾
+            </div>
+
+            <h1>
+                Welcome to Elder-Ease
+            </h1>
+
+            <p>
+                What would you like to do today?
+            </p>
+
+        </div>
+
+
+        <!-- DASHBOARD BUTTONS -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- PROFILE -->
+
+            <a href="/profile"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    👤
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        My Profile
+                    </h2>
+
+                    <p>
+                        View and manage your personal information.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- COMMUNITY -->
+
+            <a href="/community"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    👥
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        Community
+                    </h2>
+
+                    <p>
+                        Connect and chat with other members.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- ACTIVITIES -->
+
+            <a href="/activities"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    📅
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        Activities
+                    </h2>
+
+                    <p>
+                        Discover activities and events near you.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- HELP -->
+
+            <a href="/help"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    🛡️
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        Help & Safety
+                    </h2>
+
+                    <p>
+                        Find emergency help and safety support.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SOS -->
+
+            <a href="/sos"
+               class="dashboard-button sos-button">
+
+                <div class="dashboard-icon">
+                    🚨
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        SOS Emergency
+                    </h2>
+
+                    <p>
+                        Quickly send an emergency alert when you need help.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- TRUSTED CONTACT -->
+
+            <a href="/trusted-contact"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    🤝
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        Trusted Contact
+                    </h2>
+
+                    <p>
+                        Manage the person you trust for emergencies.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SCAM ALERT -->
+
+            <a href="/scam-alert"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    🛡️
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        Scam Alert
+                    </h2>
+
+                    <p>
+                        Learn how to recognise and avoid scams.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SUPPORT -->
+
+            <a href="/elder-ease-support"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    💬
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        Elder-Ease Support
+                    </h2>
+
+                    <p>
+                        Get help using the Elder-Ease app.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <a href="/notifications"
+               class="dashboard-button">
+
+                <div class="dashboard-icon">
+                    🔔
+                </div>
+
+                <div class="dashboard-text">
+
+                    <h2>
+                        Notifications
+                    </h2>
+
+                    <p>
+                        View important updates from your connected shelter.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+        <!-- LOGOUT -->
+
+        <div class="logout">
+
+            <a href="/">
+                🚪 Logout
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - Help & Safety</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: navy;
+            color: white;
+        }
+
+        .page-container {
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-icon {
+            font-size: 70px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin: 10px 0;
+        }
+
+        .subtitle {
+            font-size: 22px;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .help-card {
+            background: white;
+            color: navy;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        }
+
+        .help-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .help-card h2 {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+
+        .help-card p {
+            font-size: 19px;
+            line-height: 1.5;
+        }
+
+        .help-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin-top: 15px;
+            background: navy;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .help-button:hover {
+            opacity: 0.85;
+        }
+
+        .emergency-button {
+            background: #b00020;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto 0;
+            max-width: 400px;
+            text-align: center;
+            padding: 18px;
+            background: white;
+            color: navy;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+
+            .page-container {
+                padding: 15px;
+            }
+
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .help-card h2 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <div class="content">
+
+        <div class="header">
+
+            <div class="header-icon">
+                🛡️
+            </div>
+
+            <h1>Help & Safety</h1>
+
+            <p class="subtitle">
+                Get help, contact trusted people and stay safe.
+            </p>
+
+        </div>
+
+
+        <div class="help-grid">
+
+
+            <!-- EMERGENCY -->
+             <a href="/sos"
+   class="help-button emergency-button">
+
+    🚨 Open SOS
+
+</a>
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    🚨
+                </div>
+
+                <h2>
+                    Emergency Help
+                </h2>
+
+                <p>
+                    Get immediate help during an emergency.
+                </p>
+
+                <a href="tel:10111"
+                   class="help-button emergency-button">
+                    👮 Call Police - 10111
+                </a>
+
+                <a href="tel:10177"
+                   class="help-button emergency-button">
+                    🚑 Call Ambulance - 10177
+                </a>
+
+                <a href="tel:10177"
+                   class="help-button emergency-button">
+                    🚒 Call Fire & Rescue - 10177
+                </a>
+
+                <a href="tel:112"
+                   class="help-button emergency-button">
+                    📞 General Emergency - 112
+                </a>
+
+            </div>
+
+
+            <!-- EMERGENCY CONTACTS -->
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    📱
+                </div>
+
+                <h2>
+                    Emergency Contacts
+                </h2>
+
+                <p>
+                    Save and quickly call people you trust
+                    during an emergency.
+                </p>
+
+                <a href="/emergency-contacts"
+                   class="help-button">
+                    📱 View My Contacts
+                </a>
+
+            </div>
+
+
+            <!-- HEALTHCARE -->
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    🏥
+                </div>
+
+                <h2>
+                    Healthcare Support
+                </h2>
+
+                <p>
+                    Get information about healthcare
+                    and medical assistance.
+                </p>
+
+                <a href="/healthcare"
+                   class="help-button">
+                    🏥 Healthcare Support
+                </a>
+
+            </div>
+
+
+            <!-- TRUSTED CONTACT -->
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    👤
+                </div>
+
+                <h2>
+                    Trusted Contact
+                </h2>
+
+                <p>
+                    Manage the person you trust to assist
+                    you when you need help.
+                </p>
+
+                <a href="/trusted-contact"
+                   class="help-button">
+                    👤 Manage Trusted Contact
+                </a>
+
+            </div>
+
+
+            <!-- SCAM ALERT -->
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    ⚠️
+                </div>
+
+                <h2>
+                    Scam Alert
+                </h2>
+
+                <p>
+                    Learn how to recognise scams and
+                    protect yourself from fraud.
+                </p>
+
+                <a href="/scam-alert"
+                   class="help-button">
+                    ⚠️ View Scam Alerts
+                </a>
+
+            </div>
+
+
+            <!-- ELDER-EASE SUPPORT -->
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    💙
+                </div>
+
+                <h2>
+                    Elder-Ease Support
+                </h2>
+
+                <p>
+                    Need help using Elder-Ease?
+                    Find support and guidance here.
+                </p>
+
+                <a href="/elder-ease-support"
+                   class="help-button">
+                    💙 Get App Support
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <a href="/dashboard"
+           class="back-button">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

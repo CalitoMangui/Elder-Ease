@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Elder-Ease - Activities</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        html,
+        body {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-container {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        .form-card {
+            background-color: #0b1f3a !important;
+            color: white !important;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .page-icon {
+            font-size: 60px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .activity-card {
+            background-color: white !important;
+            color: #0b1f3a !important;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        }
+
+        .activity-card h2 {
+            color: #0b1f3a !important;
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .activity-description {
+            color: #0b1f3a !important;
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .activity-detail {
+            color: #0b1f3a !important;
+            font-size: 23px;
+            margin: 18px 0;
+            line-height: 1.4;
+        }
+
+        .activity-detail strong {
+            font-size: 24px;
+        }
+
+        .join-button,
+        .joined-button,
+        .full-button,
+        .leave-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .join-button {
+            background-color: #0b1f3a;
+            cursor: pointer;
+        }
+
+        .joined-button {
+            background-color: #1b7f3a;
+        }
+
+        .full-button {
+            background-color: #777;
+        }
+
+        .leave-button {
+            background-color: #8b0000;
+            cursor: pointer;
+        }
+
+        .message {
+            background-color: white;
+            color: #0b1f3a;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.6;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .form-footer a {
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .page-subtitle {
+                font-size: 21px;
+            }
+
+            .activity-card {
+                padding: 22px;
+            }
+
+            .activity-card h2 {
+                font-size: 28px;
+            }
+
+            .activity-description {
+                font-size: 21px;
+            }
+
+            .activity-detail {
+                font-size: 20px;
+            }
+
+            .join-button,
+            .joined-button,
+            .full-button,
+            .leave-button {
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <div class="form-card">
+
+            <div class="page-icon">
+                📅
+            </div>
+
+            <h1>
+                Activities
+            </h1>
+
+            <p class="page-subtitle">
+                Choose an activity you would like to attend.
+            </p>
+
+
+            {% if activities %}
+
+                {% for activity in activities %}
+
+                    <div class="activity-card">
+
+                        <h2>
+                            🎉 {{ activity["name"] }}
+                        </h2>
+
+
+                        <p class="activity-description">
+                            {{ activity["description"] }}
+                        </p>
+
+
+                        <div class="activity-detail">
+
+                            📅 <strong>Date</strong><br>
+
+                            {{ activity["date"] }}
+
+                        </div>
+
+
+                        <div class="activity-detail">
+
+                            🕐 <strong>Time</strong><br>
+
+                            {{ activity["time"] }}
+
+                        </div>
+
+
+                        <div class="activity-detail">
+
+                            📍 <strong>Location</strong><br>
+
+                            {{ activity["location"] }}
+
+                        </div>
+
+
+                        <div class="activity-detail">
+
+                            👥 <strong>People Joined</strong><br>
+
+                            {{ activity["joined_count"] }} people
+
+                        </div>
+
+
+                        <div class="activity-detail">
+
+                            👥 <strong>Maximum Participants</strong><br>
+
+                            {{ activity["participants"] }} people
+
+                        </div>
+
+
+                        {% if activity["joined"] == 1 %}
+
+                            <form
+                                action="/leave-activity/{{ activity['id'] }}"
+                                method="POST">
+
+                                <button
+                                    type="submit"
+                                    class="leave-button"
+                                    onclick="return confirm('Are you sure you want to leave this activity?');">
+
+                                    ❌ LEAVE ACTIVITY
+
+                                </button>
+
+                            </form>
+
+
+                        {% elif activity["joined_count"] >= activity["participants"] %}
+
+                            <button
+                                type="button"
+                                class="full-button"
+                                disabled>
+
+                                🔴 ACTIVITY FULL
+
+                            </button>
+
+
+                        {% else %}
+
+                            <form
+                                action="/join-activity/{{ activity['id'] }}"
+                                method="POST">
+
+                                <button
+                                    type="submit"
+                                    class="join-button">
+
+                                    🟢 JOIN ACTIVITY
+
+                                </button>
+
+                            </form>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="message">
+
+                    📅 <strong>No activities yet.</strong>
+
+                    <br><br>
+
+                    Please check again later.
+
+                </div>
+
+            {% endif %}
+
+
+            <div class="form-footer">
+
+                <a href="/dashboard">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

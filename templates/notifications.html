@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications - Elder-Ease</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0b1f3a;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        .notification {
+            background-color: #12345a;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .notification-icon {
+            font-size: 45px;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-content h2 {
+            margin: 0 0 8px 0;
+            font-size: 23px;
+        }
+
+        .notification-content p {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .empty {
+            text-align: center;
+            font-size: 20px;
+            background-color: #12345a;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 0;
+            background-color: white;
+            color: #0b1f3a;
+            padding: 14px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background-color: #dce8f5;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            .notification {
+                padding: 20px;
+            }
+
+            .notification-icon {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔔 Notifications</h1>
+
+    <p class="intro">
+        Stay updated with your shelter activities and collaborations.
+    </p>
+
+    {% if notifications %}
+
+    {% for notification in notifications %}
+
+        <div class="notification">
+
+            <div class="notification-icon">
+                🔔
+            </div>
+
+            <div class="notification-content">
+
+                <h2>New Notification</h2>
+
+                <p>
+                    {{ notification["message"] }}
+                </p>
+
+                <small>
+                    {{ notification["created_at"] }}
+                </small>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="empty">
+        🔔 No new notifications at the moment.
+    </div>
+
+{% endif %}
+
+    <a href="/shelter-dashboard" class="back-button">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>
