@@ -1,6 +1,5 @@
 import sqlite3
 
-
 DATABASE = "elder_ease.db"
 
 
@@ -29,7 +28,7 @@ def create_tables():
 
             id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-            name TEXT NOT NULL,
+            shelter_name TEXT NOT NULL,
 
             email TEXT UNIQUE NOT NULL,
 
@@ -306,126 +305,6 @@ def create_tables():
 
 
     # =====================================================
-    # UPDATE OLDER USERS DATABASE
-    # =====================================================
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE users
-            ADD COLUMN phone TEXT
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE users
-            ADD COLUMN age INTEGER
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE users
-            ADD COLUMN location TEXT
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE users
-            ADD COLUMN shelter_id INTEGER
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE users
-            ADD COLUMN shelter_status TEXT DEFAULT 'none'
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    # =====================================================
-    # UPDATE OLDER SHELTER DATABASE
-    # =====================================================
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE shelters
-            ADD COLUMN phone TEXT
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE shelters
-            ADD COLUMN address TEXT
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE shelters
-            ADD COLUMN home_code TEXT
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    # =====================================================
-    # UPDATE OLDER SOS DATABASE
-    # =====================================================
-
-    try:
-
-        cursor.execute("""
-            ALTER TABLE sos_alerts
-            ADD COLUMN alert_token TEXT
-        """)
-
-    except sqlite3.OperationalError:
-
-        pass
-
-
-    # =====================================================
     # SHELTER CONNECTION REQUESTS TABLE
     # =====================================================
 
@@ -450,6 +329,7 @@ def create_tables():
 
         )
     """)
+
 
     connection.commit()
 
